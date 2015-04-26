@@ -2,7 +2,7 @@ FROM scratch
 
 MAINTAINER Joe Harrison <joehazzers@gmail.com>
 
-COPY "archlinux-bootstrap-2015.04.01-x86_64.tar.gz" "/archlinux-bootstrap.tar.gz"
+ADD "http://mirrorservice.org/sites/ftp.archlinux.org/iso/2015.04.01/archlinux-bootstrap-2015.04.01-x86_64.tar.gz" "/archlinux-bootstrap.tar.gz"
 
 ADD "files/" "/docker"
 
