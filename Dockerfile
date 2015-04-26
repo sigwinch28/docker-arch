@@ -2,11 +2,11 @@ FROM scratch
 
 MAINTAINER Joe Harrison <joehazzers@gmail.com>
 
-ADD "root.x86_64/" "/"
+COPY "archlinux-bootstrap-2015.04.01-x86_64.tar.gz" "/archlinux-bootstrap.tar.gz"
 
-ADD "mirrorlist" "/etc/pacman.d/mirrorlist"
+ADD "files/" "/docker"
 
-ADD "install.sh" "/tmp/"
+RUN ["/docker/tar","-I","/docker/gzip","-xf","archlinux-bootstrap.tar.gz","-X","/docker/exclude","--strip-components=1"]
 
-RUN ["/usr/bin/bash","/tmp/install.sh"]
+RUN ["/usr/bin/bash","/docker/install.sh"]
 

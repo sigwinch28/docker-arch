@@ -32,6 +32,9 @@ unset IFS
 pacman-key --init
 pacman-key --populate archlinux
 
+# Mirrors
+/docker/mirrors.pl /etc/pacman.d/mirrorlist
+
 # System upgrade
 pacman --noconfirm -Syu
 
@@ -71,6 +74,6 @@ expect <<EOF
 	spawn pacman -Scc
 	expect {
 		-exact "ALL files from cache? \[y/N\] " { send -- "y\r"; exp_continue }
-		-exact "unused repositories? \[Y/n\] " { send -- "\r"; exp_continue }
+		-exact "unused repositories? \[Y/n\] " { send -- "y\r"; exp_continue }
 	}
 EOF
